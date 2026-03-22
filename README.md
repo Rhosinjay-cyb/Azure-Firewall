@@ -2,4 +2,4 @@
 
 ## How to run things
 
-error2.png
+error2.PNG
