@@ -1,11 +1,19 @@
-# Azure_works
+## project Title
 
-## 1. How to run things
+## Objective
 
-## 2. The correct way
+## Tools Used
 
+## Lab Setup
+
+## Step Taken
+
+## Results (Screenshots)
+
+## Findings
+
+## Recommendations
 ![](error2.PNG)
 
-### 2.1 Body of Letter
-#### 2.1.1 All you need to know
+
  
