@@ -5,8 +5,8 @@ The aim of the project is deploy an Azure firewall to control outbound web acces
 ## Tools Used
 Azure Firewall
 ## Lab Setup
-Creation of Virtual network and multiple Subnets
-Deployment of VMs
+Creation of Virtual network and multiple Subnets/
+Deployment of VMs/
 Deployment of Azure Firewall alongside Firewall policy
 Configure of a route table
 Configure of a UDR
