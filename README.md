@@ -12,8 +12,8 @@ Configure of a route table
 Configure of a UDR
 Configure Application, Network and DNAT rules
 Testing of Firewall
-## Step Taken
-
+## Step Taken (Screenshots)
+The process starts with the creation of virtual networks
 ## Results (Screenshots)
 
 ## Findings
