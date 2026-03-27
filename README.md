@@ -28,7 +28,7 @@ The application Rule is created as shown below. The first rule is applied to the
 ![image]
 The network rule allows the firewall to send DNS request to the external DNS server for the resolving of domain names. The rule is applicable to VMs that are located in the subnet stated in the source address (HR-subnet and Dev-subnet)\
 ![image] 
-The DNAT rule allows users to connect to the VMs in the subnet through RDP. However, the connections is routed through the firewall. The DNAT rule helps the firewall to identify which VM to send the RDP traffic to. To avoid coflict in RDP traffic, different destination port no is specified for each VM.
+The DNAT rule allows users to connect to the VMs in the subnet through RDP. However, the connections is routed through the firewall. The DNAT rule helps the firewall to identify which VM to send the RDP traffic to. To avoid coflict in RDP traffic, different destination port no is specified for each VM. This rule is configured to allow connection to the RDP from any IP address.
 ![image]
 The VMs in both subnets are updated with a primary and secondary DNS address to allow the VMs send DNS request to the external DNS server.
 ## Results (Screenshots)
@@ -50,7 +50,7 @@ The web browser on the Dev-VM is launched and it is used to access the websites 
 ![image]\
 ![image]\
 ## Findings
-
+Overall, the implementation of Azure Firewall has been used to restrict outbound web access and control inbound RDP traafic. However, the DNAT rules allow connection from any IP aadress, this should be narrowed to only the IP address that requires exposure of the RDP port was identified as a weakness, and Azure Bastion was configured thereby reducing attack surface while meeting the standard of a production environment. Also, the firewall logs are  forwarded to Microsoft Sentimel to detect failed RDP attempts and suspicious traffic
 ## Recommendations
 ![](error2.PNG)
 
