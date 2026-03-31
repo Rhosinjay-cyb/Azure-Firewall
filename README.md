@@ -38,21 +38,22 @@ The VMs in both subnets are updated with a primary and secondary DNS address to 
 ## Results (Screenshots)
 The image shows the process to accessing the VM in the HR-subnet via RDP.
 Recall that this connection was possible with the DNAT rule and the connection to the VM is through the firewall public IP. Hence the firewall public IP and the destination port is specified to enable a connection to the VM (in this case, HR-VM)
-![image]\
-![image]\
+![image](c2vm1.png)
+![image](lg2vm1.png)
+![image](entry.png)
 The web browser on the HR-VM is launched and it is used to access the websites specified in the application and the connection was succesful while the connection to other websites were denied.
-![image]\
-![image]\
-![image]\
+![image](web1)
+![image](web2)
+![image](web4)
 The process was also repeated for the other VM (Dev-VM)
 The image shows the process to accessing the VM in the Dev-subnet via RDP.
 Recall that this connection was possible with the DNAT rule and the connection to the VM is through the firewall public IP. Hence the firewall public IP and the destination port is specified to enable a connection to the VM (in this case Dev-VM)
-![image]\
-![image]\
+![image](c2vm2.png)
+![image](lg2bmw=qq)
+![image](web1)
 The web browser on the Dev-VM is launched and it is used to access the websites specified in the application and the connection was succesful while the connection to other websites were denied.
-![image]\
-![image]\
-![image]\
+![image]\(web11.png)
+![image](web12.png)
 ## Findings and Recommendations
 Using Azure Firewall to restrict outbound web access and control inbound RDP via DNAT is a valid implementation. However, for stronger security, it would require restricting source IPs in the firewall policies, enabling logging and monitoring with Microsoft Sentinel to detect suapicious traffic and ideally replacing public RDP exposure with Azure Bastion to minimize attack surface.
 ## Implementation of Recommendations
