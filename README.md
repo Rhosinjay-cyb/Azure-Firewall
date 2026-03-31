@@ -42,14 +42,14 @@ Recall that this connection was possible with the DNAT rule and the connection t
 ![image](lg2vm1.png)
 ![image](entry.png)
 The web browser on the HR-VM is launched and it is used to access the websites specified in the application and the connection was succesful while the connection to other websites were denied.
-![image](web1)
-![image](web2)
+![image](web1.png)
+![image](web2.png)
 ![image](web4)
 The process was also repeated for the other VM (Dev-VM)
 The image shows the process to accessing the VM in the Dev-subnet via RDP.
 Recall that this connection was possible with the DNAT rule and the connection to the VM is through the firewall public IP. Hence the firewall public IP and the destination port is specified to enable a connection to the VM (in this case Dev-VM)
 ![image](c2vm2.png)
-![image](lg2bmw=qq)
+![image](lg2bvm2.png)
 ![image](entry2.png)
 The web browser on the Dev-VM is launched and it is used to access the websites specified in the application and the connection was succesful while the connection to other websites were denied.
 ![image]\(web11.png)
