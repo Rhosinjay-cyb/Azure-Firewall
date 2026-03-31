@@ -52,9 +52,9 @@ The web browser on the Dev-VM is launched and it is used to access the websites 
 ## Findings and Recommendations
 Using Azure Firewall to restrict outbound web access and control inbound RDP via DNAT is a valid implementation. However, for stronger security, it would require restricting source IPs in the firewall policies, enabling logging and monitoring with Microsoft Sentinel to detect suapicious traffic and ideally replacing public RDP exposure with Azure Bastion to minimize attack surface.
 ## Implementation of Recommendations
-Deployment of Azure Bastion in subnet within the same Vnet as other subnets
+Deployment of Azure Bastion in subnet within the same Vnet as other subnets to provide secured remote access to VMs without traversing the internet. 
 ![image]\
-Configuration of the forwarding of firewall logs to Microsoft Sentinel to enable to enable threat investigation and detection.
+Configuration of diagnostic settings on Azure firewall to forward logs to a log analytics workspace integrated with Microsoft Sentinel to analyse traffic across the firewall.
 ![image]
 ## New Results
 
