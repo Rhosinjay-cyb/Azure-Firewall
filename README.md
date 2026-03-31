@@ -15,9 +15,9 @@ Updating the VMs DNS server with external DNS address\
 Testing of the Firewall 
 ## Step Taken (Screenshots)
 The security configuration starts with the deployment of a virtual network alongside with subnets. The first two subnets are for the management of the firewall, while the last two subnets are workload subnets for the HR and Dev teams. The VMs will be deployed in the workload subnets afterwards.\
-![image]
+![image](vnet.png)
 The deployed VMs are shown below, the outbound access of both VMs will afterwards be configured to restrict access to certain websites. For instance, users accessing the VMs in HR-subnet will be able to access the Linkedin website.\  
-![image]
+![image](
 The Azure Firewall (SKU: Basic) is deployed in the AzureFirewall subnet. The public and private IP address of the firewall are noted and would be used for further configurations.\
 ![image]
 A route table is configured and the HR-subnet and Dev-subnet is associated to it. A UDR is added to the route table which enables the traffic from both subnets to pass through the firewall before reaching the internet.\
