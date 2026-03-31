@@ -14,7 +14,9 @@ Configuration of firewall policy (Application, Network and DNAT rules)\
 Updating the VMs DNS server with external DNS address\
 Testing of the Firewall 
 ## Step Taken (Screenshots)
-The security configuration starts with the deployment of a virtual network alongside with subnets. The first two subnets are for the management of the firewall, while the last two subnets are workload subnets for the HR and Dev teams. The VMs will be deployed in the workload subnets afterwards.\
+The security configuration starts with the deployment of a resource group
+![image]
+Followed with the deployment of a virtual network alongside with subnets. The first two subnets are for the management of the firewall, while the last two subnets are workload subnets for the HR and Dev teams. The VMs will be deployed in the workload subnets afterwards.\
 ![image](VNET.png)
 The deployed VMs are shown below, the outbound access of both VMs will afterwards be configured to restrict access to certain websites. For instance, users accessing the VMs in HR-subnet will be able to access the Linkedin website.\  
 ![image](VMs.png)
