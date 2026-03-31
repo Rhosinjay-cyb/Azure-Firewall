@@ -50,7 +50,7 @@ The image shows the process to accessing the VM in the Dev-subnet via RDP.
 Recall that this connection was possible with the DNAT rule and the connection to the VM is through the firewall public IP. Hence the firewall public IP and the destination port is specified to enable a connection to the VM (in this case Dev-VM)
 ![image](c2vm2.png)
 ![image](lg2bmw=qq)
-![image](web1)
+![image](entry2.png)
 The web browser on the Dev-VM is launched and it is used to access the websites specified in the application and the connection was succesful while the connection to other websites were denied.
 ![image]\(web11.png)
 ![image](web12.png)
