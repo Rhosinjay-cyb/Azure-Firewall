@@ -59,6 +59,8 @@ For Dev-VM
 ![image](vmdns.png)
 
 ## Results (Screenshots)
+With the completionofthe security configurations. The next task is to test the firewall. This will requiring logging into the earlier depolyed VMs and then establish a connection with the web browser on the VMs.
+
 The following images show the procedures to accessing the VM in the HR-subnet via RDP.
 Recall that this connection was possible with the DNAT rule, and the connection to the VM is through the firewall public IP. Hence the firewall public IP and the destination port is specified to enable a connection to the VM (in this case, HR-VM)
 
@@ -74,7 +76,7 @@ The web browser on the HR-VM is launched and it is used to access the web apps a
 
 ![image](web2.png)
 
-Denied access comes in different variants as shown in the following images.
+A resulting denied access or failed connection due to the deployed firewall comes in different variants as shown in the following images.
 
 ![image](web3.png)
 
