@@ -15,7 +15,7 @@ Updating the VMs DNS server with external DNS address\
 Testing of the Firewall 
 ## Step Taken (Screenshots)
 The security configuration starts with the deployment of a resource group (Project-RG)
-![image](rg.png)
+![image](rg.PNG)
 Followed with the deployment of a virtual network (Project-Vnet) alongside with subnets. The first two subnets are for the management of the firewall, while the last two subnets are workload subnets for the HR and Dev teams. VMs will be deployed in the workload subnets afterwards to test the deployed firewall.
 
 ![image](VNET.png)
