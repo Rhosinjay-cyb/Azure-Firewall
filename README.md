@@ -119,7 +119,7 @@ Starting with the investigation of the partial loading of web pages. The task is
 
 The Devtools is launched by pressing the F12 key on the keyboard while on the web page in the web browser. On the Devtools environment, the dropped connection could be identified from the networks tab.
 
-![image](EVI2.PNG)
+![image](EVI21.PNG)
 
 On the other hand, the firewall logs particularly application rule log was analysed to identify the dopped traffic.
 
@@ -127,7 +127,7 @@ On the other hand, the firewall logs particularly application rule log was analy
 
 Having identified the denied traffic with two different methods, and they happen to be the same. The application rule is updated with the new FQDN.
 
-![image](EVI7.PNG)
+![image](EV22.PNG)
 
 The web app is re-launched and it now loads properly
 
