@@ -129,6 +129,10 @@ Having identified the denied traffic with two different methods, and they happen
 
 ![image](EVI7.PNG)
 
+The web app is re-launched and it now loads properly
+
+![image](EVI6.PNG)
+
 Deployment of Azure Bastion in subnet within the same Vnet as other subnets to provide secured remote access to VMs without traversing the internet. 
 ![image]\
 Configuration of diagnostic settings on Azure firewall to forward logs to a log analytics workspace integrated with Microsoft Sentinel to analyse traffic across the firewall.
