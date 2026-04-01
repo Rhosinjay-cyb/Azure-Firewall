@@ -20,7 +20,7 @@ Followed with the deployment of a virtual network (Project-Vnet) alongside with 
 
 ![image](VNET.png)
 
-The deployed VMs (HR-VM & Dev-VM) are shown below, the outbound access of both VMs will be configured to restrict access to certain websites. For instance, users accessing the VMs in the HR-subnet will have their web access restricted to Linkedin and other web apps used by the department.
+The deployed VMs (HR-VM & Dev-VM) are shown below, the outbound access of both VMs will be configured to restrict access to certain websites. Meaning, users accessing the VMs in the HR-subnet will have their web access restricted to web apps used by the department.
 
 ![image](VMs.png)
 
@@ -59,8 +59,8 @@ For Dev-VM
 ![image](vmdns.png)
 
 ## Results (Screenshots)
-The following images show the process to accessing the VM in the HR-subnet via RDP.
-Recall that this connection was possible with the DNAT rule and the connection to the VM is through the firewall public IP. Hence the firewall public IP and the destination port is specified to enable a connection to the VM (in this case, HR-VM)
+The following images show the procedures to accessing the VM in the HR-subnet via RDP.
+Recall that this connection was possible with the DNAT rule, and the connection to the VM is through the firewall public IP. Hence the firewall public IP and the destination port is specified to enable a connection to the VM (in this case, HR-VM)
 
 ![image](c2vm1.png)
 
@@ -68,19 +68,21 @@ Recall that this connection was possible with the DNAT rule and the connection t
 
 ![image](entry.png)
 
-The web browser on the HR-VM is launched and it is used to access the websites specified in the application and the connection was succesful while the connection to other websites were denied.
+The web browser on the HR-VM is launched and it is used to access the web apps allowed in the application rule and the connection was succesful while the connection to other websites were denied.
 
 ![image](web1.png)
 
 ![image](web2.png)
 
+Denied access comes in different variants as shown in the following images.
+
 ![image](web3.png)
 
 ![image](web4.png)
 
-The processess were also repeated for the other VM (Dev-VM)
-The following images show the process to accessing the VM in the Dev-subnet via RDP.
-Recall that this connection was possible with the DNAT rule and the connection to the VM is through the firewall public IP. Hence the firewall public IP and the destination port is specified to enable a connection to the VM (in this case Dev-VM)
+The same procedures were also repeated for the other VM (Dev-VM)
+The following images show the procedures to accessing the VM in the Dev-subnet via RDP.
+Also, recall that this connection was possible with the DNAT rule, and the connection to the VM is through the firewall public IP. Hence the firewall public IP and the destination port is specified to enable a connection to the VM (in this case Dev-VM)
 
 ![image](c2vm2.png)
 
@@ -88,7 +90,7 @@ Recall that this connection was possible with the DNAT rule and the connection t
 
 ![image](entry2.png)
 
-The web browser on the Dev-VM is launched and it is used to access the websites specified in the application and the connection was succesful while the connection to other websites were denied.
+The web browser on the Dev-VM is launched and it is used to access the web apps specified in the application rule and the connection was succesful while other connections were denied.
 
 ![image](web11.png)
 
