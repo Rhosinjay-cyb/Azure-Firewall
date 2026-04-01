@@ -42,8 +42,9 @@ Recall that this connection was possible with the DNAT rule and the connection t
 ![image](lg2vm1.png)
 ![image](entry.png)
 The web browser on the HR-VM is launched and it is used to access the websites specified in the application and the connection was succesful while the connection to other websites were denied.
-![image](web11.png)
-![image](web12.png)
+![image](web1.png)
+![image](web2.png)
+![image](web3.png)
 ![image](web4.png)
 The process was also repeated for the other VM (Dev-VM)
 The image shows the process to accessing the VM in the Dev-subnet via RDP.
@@ -52,7 +53,7 @@ Recall that this connection was possible with the DNAT rule and the connection t
 ![image](lg2bvm2.png)
 ![image](entry2.png)
 The web browser on the Dev-VM is launched and it is used to access the websites specified in the application and the connection was succesful while the connection to other websites were denied.
-![image]\(web11.png)
+![image](web11.png)
 ![image](web12.png)
 ## Findings and Recommendations
 Using Azure Firewall to restrict outbound web access and control inbound RDP via DNAT is a valid implementation. However, for stronger security, it would require restricting source IPs in the firewall policies, enabling logging and monitoring with Microsoft Sentinel to detect suapicious traffic and ideally replacing public RDP exposure with Azure Bastion to minimize attack surface.
