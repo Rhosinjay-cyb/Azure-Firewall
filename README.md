@@ -123,7 +123,7 @@ The Devtools is launched by pressing the F12 key on the keyboard while on the we
 
 On the other hand, the firewall logs particularly application rule log was analysed to identify the dopped traffic.
 
-![image](EVI.PNG)
+![image](EVI20.PNG)
 
 Having identified the denied traffic with two different methods, and they happen to be the same. The application rule is updated with the new FQDN.
 
