@@ -36,7 +36,7 @@ A firewall policy (Project-FWP) is created alongside the deployment of firewall.
 
 ![image](fwp.png)
 
-The application Rule is created as shown below. The first rule is applied to the HR-subnet while the other rule is applied to the Dev-subnet. The source of the first rule is the IP address space of the HR-subnet, the rule allow web access to the FQDN specified in the rule. The source of the second rule is the IP address space of the Dev-subnet and the rule also allow access to FQDN specified in the rule.
+The application Rule is created as shown below. The first rule is applied to the HR-subnet while the other rule is applied to the Dev-subnet. The source of the first rule is the IP address space of the HR-subnet, the rule allows access to only the FQDN (Linkedin & Coursera) specified in the rule while other connections will be dropped. The source of the second rule is the IP address space of the Dev-subnet and the rule only allow access to FQDN (Github) specified in the rule while other connections will also be dropped.
 
 ![image](apr.png)
 
