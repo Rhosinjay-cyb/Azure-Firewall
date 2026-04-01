@@ -51,10 +51,10 @@ The DNAT rule allows users to connect to the VMs in the subnet through RDP. Howe
 The VMs in both subnets are updated with a primary and secondary DNS address to allow the VMs send DNS request to the external DNS server.
 
 For HR-VM
-![image](vmdns.png)
+![image](vmdns2.png)
 
 For Dev-VM
-![image](vmdns2.png)
+![image](vmdns.png)
 
 ## Results (Screenshots)
 The image shows the process to accessing the VM in the HR-subnet via RDP.
