@@ -137,7 +137,7 @@ The application rule for other web apps were equally updated with their FQDN and
 
 ![image](EVI8.PNG)
 
-![image](EVI9.PNG)
+![image](evi9.PNG)
 
 Deployment of Azure Bastion in subnet within the same Vnet as other subnets to provide secured remote access to VMs without traversing the internet. 
 ![image]\
