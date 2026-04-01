@@ -35,7 +35,7 @@ The deployed VMs (HR-VM & Dev-VM) are shown below, the outbound access of both V
 
 ![image](VMs.png)
 
-The Azure Firewall (Project-FW) of basic SKU is deployed in the AzureFirewall subnet. The public and private IP address of the firewall are noted and would be used in further configurations.
+The Azure Firewall (Project-FW) of basic SKU is deployed in the AzureFirewall subnet. The public and private IP address of the firewall are noted and would be used in further configurations. The firewall policy (Project-FWP) is also created alongside the deployment of the firewall.
 
 ![image](FW.png)
 
@@ -43,7 +43,7 @@ A route table (Project-RT) is configured and the HR-subnet and Dev-subnet is ass
 
 ![image](RT.png)
 
-A firewall policy (Project-FWP) is created alongside the deployment of firewall. This policy allows the configuration of Application rule, Network rule and DNAT rule.
+With the firewall policy (Project-FWP), the Application rule, Network rule and DNAT rule could be configured.
 
 ![image](fwp.png)
 
