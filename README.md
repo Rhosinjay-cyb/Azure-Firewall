@@ -115,6 +115,7 @@ The web browser on the Dev-VM is launched and it is used to access the web apps 
 The implementation of Azure Firewall to restrict outbound web access and control inbound RDP via DNAT was succesful as shown in the result section. However, it was observed that the web pages load partially. Meaning, some of its dependencies has been blocked by the firewall. Hence, this challenge needs to solved to make this security solution suitable for production standard. Other areas of concern for stronger security include restricting source IPs in the firewall policies, enabling logging and monitoring with Microsoft Sentinel to detect suspicious traffic and ideally replacing public RDP exposure with Azure Bastion to minimize attack surface.
 
 ## Implementation of Recommendations
+Starting with the investigation of the partial loading of web pages. 
 
 Deployment of Azure Bastion in subnet within the same Vnet as other subnets to provide secured remote access to VMs without traversing the internet. 
 ![image]\
