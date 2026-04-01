@@ -49,7 +49,7 @@ With the firewall policy (Project-FWP), the Application rule, Network rule and D
 
 The application Rule is created as shown below. The first rule is applied to the HR-subnet while the other rule is applied to the Dev-subnet. The source of the first rule is the IP address space of the HR-subnet, the rule allows access to only the FQDN (Linkedin & Coursera) specified in the rule while other connections will be dropped. The source of the second rule is the IP address space of the Dev-subnet and the rule only allows access to FQDN (Github) specified in the rule while other connections will also be dropped.
 
-![image](apr.png)
+![image](appr.PNG)
 
 The network rule allows the firewall to send DNS request to the external DNS servers (209.244.0.3, 209.244.0.4) for the resolving of domains. The rule is applicable to VMs that are located in the subnet specified in the source address (HR-subnet and Dev-subnet)
 
