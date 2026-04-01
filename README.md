@@ -1,10 +1,17 @@
 ## Project Title
+
 Designing Secured Public Access to Azure VMs and controlling its Web Access Using Azure Firewall.
+
 ## Objective
+
 The aim of this project is deploy an Azure firewall to control outbound web access of VMs, centralize traffic inspection and leverage firewall policy (DNAT Rule) to configure remotes access to VMs via the public IP of the firewall. 
+
 ## Tools Used
+
 Azure Firewall
+
 ## Lab Setup
+
 Deployment of virtual network and multiple subnets\
 Deployment of virtual machines\
 Deployment of Azure Firewall alongside firewall policy\
@@ -13,7 +20,9 @@ Configuration of a user-defined route (UDR)\
 Configuration of firewall policy (Application, Network and DNAT rules)\
 Updating the VMs DNS server with external DNS address\
 Testing of the Firewall 
+
 ## Step Taken (Screenshots)
+
 The security configuration starts with the deployment of a resource group (Project-RG)
 
 ![image](rg.PNG)
@@ -61,6 +70,7 @@ For Dev-VM
 ![image](vmdns.png)
 
 ## Results (Screenshots)
+
 With the completion of the security configurations. The next task is to test the firewall. This will require logging into the earlier depolyed VMs and then establish a connection with the web browser on the VMs to observe if traffic will be blocked/allowed as specified in the configurations.
 
 The following images show the procedures to connecting to the VM in the HR-subnet via RDP.
@@ -101,8 +111,11 @@ The web browser on the Dev-VM is launched and it is used to access the web apps 
 ![image](web12.png)
 
 ## Findings and Recommendations
-Using Azure Firewall to restrict outbound web access and control inbound RDP via DNAT is a valid implementation. However, for stronger security, it would require restricting source IPs in the firewall policies, enabling logging and monitoring with Microsoft Sentinel to detect suapicious traffic and ideally replacing public RDP exposure with Azure Bastion to minimize attack surface.
+
+The implementation of Azure Firewall to restrict outbound web access and control inbound RDP via DNAT was succesful as shown in the result section. However, it was observed that the web pages load partially. Meaning, some of its dependencies has been blocked by the firewall. Hence, this challenge needs to solved to make this security solution suitable for production standard. Other areas of concern for stronger security include restricting source IPs in the firewall policies, enabling logging and monitoring with Microsoft Sentinel to detect suspicious traffic and ideally replacing public RDP exposure with Azure Bastion to minimize attack surface.
+
 ## Implementation of Recommendations
+
 Deployment of Azure Bastion in subnet within the same Vnet as other subnets to provide secured remote access to VMs without traversing the internet. 
 ![image]\
 Configuration of diagnostic settings on Azure firewall to forward logs to a log analytics workspace integrated with Microsoft Sentinel to analyse traffic across the firewall.
