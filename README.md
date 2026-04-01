@@ -127,7 +127,7 @@ On the other hand, the firewall logs particularly application rule log was analy
 
 Having identified the denied traffic with two different methods, and they happen to be the same. The application rule is updated with the new FQDN.
 
-![image](EV22.png)
+![image](EVI22.png)
 
 The web app is re-launched and it now loads properly
 
