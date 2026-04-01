@@ -133,6 +133,12 @@ The web app is re-launched and it now loads properly
 
 ![image](EVI6.PNG)
 
+The application rule for other web apps were equally updated with their FQDN and the pages also loaded successfully.
+
+![image](EVI8.PNG)
+
+![image](EVI9.PNG)
+
 Deployment of Azure Bastion in subnet within the same Vnet as other subnets to provide secured remote access to VMs without traversing the internet. 
 ![image]\
 Configuration of diagnostic settings on Azure firewall to forward logs to a log analytics workspace integrated with Microsoft Sentinel to analyse traffic across the firewall.
