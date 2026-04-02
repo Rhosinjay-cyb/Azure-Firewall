@@ -12,14 +12,14 @@ Azure Firewall
 
 ## Lab Setup
 
-Deployment of virtual network and multiple subnets\
-Deployment of virtual machines\
-Deployment of Azure Firewall alongside firewall policy\
-Configuration of a route table\
-Configuration of a user-defined route (UDR)\
-Configuration of firewall policy (Application, Network and DNAT rules)\
-Updating the VMs DNS server with external DNS address\
-Testing of the Firewall 
+* Deployment of virtual network and multiple subnets\
+* Deployment of virtual machines\
+* Deployment of Azure Firewall alongside firewall policy\
+* Configuration of a route table\
+* Configuration of a user-defined route (UDR)\
+* Configuration of firewall policy (Application, Network and DNAT rules)\
+* Updating the VMs DNS server with external DNS address\
+* Testing of the Firewall 
 
 ## Step Taken (Screenshots)
 
@@ -112,40 +112,41 @@ The web browser on the Dev-VM is launched and it is used to access the web apps 
 
 ## Findings and Recommendations
 
-The implementation of Azure Firewall to restrict outbound web access and control inbound RDP via DNAT was succesful as shown in the result section. However, it was observed that the web pages load partially. Meaning, some of its dependencies has been blocked by the firewall. Hence, this challenge needs to solved to make this security solution suitable for production standard. Other areas of concern for stronger security include restricting source IPs in the firewall policies, enabling logging and monitoring with Microsoft Sentinel to detect suspicious traffic and ideally replacing public RDP exposure with Azure Bastion to minimize attack surface.
+The implementation of Azure Firewall to restrict outbound web access and control inbound RDP via DNAT was succesful as shown in the result section. However, it was observed that the web pages load partially. Meaning, some of its dependencies has been blocked by the firewall. Hence, this challenge needs to solved to make this security solution suitable for production standard. Other areas of concern for stronger security include restricting source IPs in the firewall policies, enabling diagnostic settings of the firewall to detect suspicious traffic and ideally replacing public RDP exposure with Azure Bastion to minimize attack surface.
 
 ## Implementation of Recommendations
 
-1. Starting with the investigation of the partial loading of web pages. The task is to identify the traffic that carries the dependencies of the web pages which are being dropped by the firewall. There are two options to it. The first option is to use the DevTools of the web browser where the web app is being accessed and the other option is through the analysis of firewall logs. 
+1. Starting with the investigation of the partial loading of web pages. The task is to identify the FQDN of the dependencies which the firewall blocked access to. Two different methods were used in identifying the FQDNs. The first method was to use the DevTools of the web browser where the web app is being accessed and the other method is the analysis of firewall logs. 
 
-The DevTools is launched by pressing the F12 key on the keyboard while on the web page in the web browser. On the Devtools environment, the dropped connection could be identified from the networks tab.
+The DevTools is launched by pressing the F12 key on the keyboard while on the web page in the web browser. In the Devtools environment, the dropped FQDNs could be identified from the networks tab.
 
 ![image](EVI21.png)
 
-Before the firewall logs could be accessed, the diagnostics settings of the firewall was enabled from the monitoring blade of the firewall by simply forwarding the firewall logs to a log analytics workspace (Project-workspace) which has been created earlier.
+Before the firewall logs could be accessed, the diagnostics settings of the firewall was enabled from the monitoring blade of the firewall by simply forwarding the firewall logs to a log analytics workspace (Project-workspace) which had been created earlier.
 
 ![image](FW2LAW.PNG)
 
-Afterwards, the firewall logs particularly application rule log was analysed to identify the dopped traffic
+Afterwards, the firewall logs particularly application rule log was analysed to identify the blocked FQDNs
 
 ![image](EVI20.png)
 
-Having identified the denied FQDNs (d3njjcbhbojbot.cloudfront.net & coursera_assets.s3.amazonaws.com) and validating it with two different methods. The application rule is updated with the newly discovered FQDN while using a wildcard. 
-Note: It is safe to avoid broad wildcards unless neccessary 
+Having identified the denied FQDNs (d3njjcbhbojbot.cloudfront.net & coursera_assets.s3.amazonaws.com) with two different methods. The application rule is updated with the newly discovered FQDN while using a wildcard. 
+
+Note: It is recommended to avoid broad wildcards unless neccessary.
 
 ![image](EVI22.png)
 
-The web app is re-launched and it now loads properly
+The web application was refreshed and it is now loading properly
 
 ![image](EVI6.PNG)
 
-The application rule for other web apps were equally updated with their FQDN and the pages also loaded successfully.
+The application rules allowing web access to other web applications (Linkedin & Github) were equally updated with their FQDNs and the web apps were refreshed.
 
 ![image](EVI8.PNG)
 
 ![image](evi9.PNG)
 
-2. For the deployment of Azure Bastion to replace the using of RDP port. Firstly, AzureBastionSubnet is added to subnets within the virtual networks.
+2. For the deployment of Azure Bastion to provide secure remote access to the VMs without exposing them to the internet. Firstly, AzureBastionSubnet is added to subnets within the virtual network.
 
 ![image](BST-SN.PNG)
 
@@ -161,11 +162,11 @@ Entering the login details of the HR-VM
 
 ![image](ENP.PNG)
 
-Succesful entry into the HR-VM
+Succesful access into the HR-VM
 
 ![image](ENHR.PNG)
 
-The process was repeated to connect to the Dev-VM via Azure Bastion.
+The process was repeated to connect remotely to the Dev-VM via Azure Bastion.
 
 ![image](ENDEV.PNG)
 
