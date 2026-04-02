@@ -115,13 +115,14 @@ The web browser on the Dev-VM is launched and it is used to access the web apps 
 The implementation of Azure Firewall to restrict outbound web access and control inbound RDP via DNAT was succesful as shown in the result section. However, it was observed that the web pages load partially. Meaning, some of its dependencies has been blocked by the firewall. Hence, this challenge needs to solved to make this security solution suitable for production standard. Other areas of concern for stronger security include restricting source IPs in the firewall policies, enabling logging and monitoring with Microsoft Sentinel to detect suspicious traffic and ideally replacing public RDP exposure with Azure Bastion to minimize attack surface.
 
 ## Implementation of Recommendations
+
 1. Starting with the investigation of the partial loading of web pages. The task is to identify the traffic that carries the dependencies of the web pages which are being dropped by the firewall. There are two options to it. The first option is to use the DevTools of the web browser where the web app is being accessed and the other option is through the analysis of firewall logs. 
 
 The DevTools is launched by pressing the F12 key on the keyboard while on the web page in the web browser. On the Devtools environment, the dropped connection could be identified from the networks tab.
 
 ![image](EVI21.png)
 
-Before the firewall logs could be accessed, the Azure Diagnostics of the firewall was enabled from the monitoring blade of the firewall by simply forwarding the firewall logs to a log analytics workspace (Project-workspace) which has been created earlier.
+Before the firewall logs could be accessed, the diagnostics settings of the firewall was enabled from the monitoring blade of the firewall by simply forwarding the firewall logs to a log analytics workspace (Project-workspace) which has been created earlier.
 
 ![image](FW2LAW.PNG)
 
@@ -144,7 +145,7 @@ The application rule for other web apps were equally updated with their FQDN and
 
 ![image](evi9.PNG)
 
-For the deployment of Azure Bastion to replace the using of RDP port. Firstly, AzureBastionSubnet is added to subnets within the virtual networks.
+2. For the deployment of Azure Bastion to replace the using of RDP port. Firstly, AzureBastionSubnet is added to subnets within the virtual networks.
 
 ![image](BST-SN.PNG)
 
@@ -172,6 +173,7 @@ The process was repeated to connect to the Dev-VM via Azure Bastion.
 
 
 ## Future Works
-Configuration of diagnostic settings on Azure firewall to forward logs to a log analytics workspace integrated with Microsoft Sentinel to analyse traffic across the firewall.
+Integration of Microsoft sentinel with the log analytics workspace (Project-workspace) and then collecting logs from Azure Bastion and the Virtual machines and sending it to the sentinel-integrated log analytic workspace together with the already enabled firewall logs for centralized monitoring and threat detection.
+
 
  
