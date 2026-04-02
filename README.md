@@ -121,7 +121,11 @@ The DevTools is launched by pressing the F12 key on the keyboard while on the we
 
 ![image](EVI21.png)
 
-On the other hand, the firewall logs particularly application rule log was analysed to identify the dopped traffic.
+Before the firewall logs could be accessed, the Azure Diagnostics of the firewall was enabled from the monitoring blade of the firewall by simply forwarding the firewall logs to a log analytics workspace (Project-workspace) which has been created earlier.
+
+![image](FW2LAW.PNG)
+
+Afterwards, the firewall logs particularly application rule log was analysed to identify the dopped traffic
 
 ![image](EVI20.png)
 
@@ -141,29 +145,32 @@ The application rule for other web apps were equally updated with their FQDN and
 
 For the deployment of Azure Bastion to replace the using of RDP port. Firstly, AzureBastionSubnet is added to subnets within the virtual networks.
 
+![image](BST-SN.PNG)
 
 Afterwards, Azure Bastion is deployed.
 
+![image](BST.PNG)
 
 Attempting to connect the HR-VM via Azure Bastion
 
+![image](CVB.PNG)
 
 Entering the login details of the HR-VM
 
+![image](ENP.PNG)
 
 Succesful entry into the HR-VM
 
+![image](ENHR.PNG)
 
 The process was repeated to connect to the Dev-VM via Azure Bastion.
 
-![image]
-Configuration of diagnostic settings on Azure firewall to forward logs to a log analytics workspace integrated with Microsoft Sentinel to analyse traffic across the firewall.
-![image]
+![image](ENDEV.PNG)
 
 ## Conclusion
 
 
 ## Future Works
-
+Configuration of diagnostic settings on Azure firewall to forward logs to a log analytics workspace integrated with Microsoft Sentinel to analyse traffic across the firewall.
 
  
