@@ -8,7 +8,7 @@ The aim of this project is deploy an Azure firewall to control outbound web acce
 
 ## Tools Used
 
-Azure Firewall
+Azure Firewall, Azure Bastion, Log Analytics Workspace, DevTools
 
 ## Lab Setup
 
@@ -43,11 +43,11 @@ A route table (Project-RT) is configured and the HR-subnet and Dev-subnet is ass
 
 ![image](RT.png)
 
-With the firewall policy (Project-FWP), the Application rule, Network rule and DNAT rule could be configured.
+With the firewall policy (Project-FWP), the Application rule, Network rule and DNAT rule would be configured.
 
 ![image](fwp.png)
 
-The application Rule is created as shown below. The first rule is applied to the HR-subnet while the other rule is applied to the Dev-subnet. The source of the first rule is the IP address space of the HR-subnet, the rule allows access to only the FQDN (Linkedin & Coursera) specified in the rule while other connections will be dropped. The source of the second rule is the IP address space of the Dev-subnet and the rule only allows access to FQDN (Github) specified in the rule while other connections will also be dropped.
+The application Rule is created as shown below. The first rule is applied to the HR-subnet while the other rule is applied to the Dev-subnet. The source of the first rule is the IP address space of the HR-subnet, the rule allows access to only the FQDN (linkedin.com & coursera.org) specified in the rule while other connections will be dropped. The source of the second rule is the IP address space of the Dev-subnet and the rule only allows access to FQDN (github.com) specified in the rule while other connections will also be dropped.
 
 ![image](appr.PNG)
 
@@ -57,7 +57,7 @@ The network rule allows the firewall to send DNS request to the external DNS ser
 
 The DNAT rule allows users to connect to the VMs in the subnet through RDP. However, the connections is routed through the firewall. The DNAT rule helps the firewall to identify which VM to send the RDP traffic to. To avoid conflict in RDP traffic, different destination port no is specified for each VM (3389, 3390) while the traffic is translated to the standard RDP port (3389). This rule is configured to allow connection to the RDP from any IP address. 
 
-Note: When multiple VMs have their RDP traffic routed through the firewall, their destination port numbers must be distinct, which will require assigning random numbers as port numbers.
+Note: When multiple VMs have their RDP traffic routed through the firewall, their destination port numbers must be distinct, which may require assigning random numbers as port numbers.
 
 ![image](dr.png)
 
@@ -71,10 +71,10 @@ For Dev-VM
 
 ## Results (Screenshots)
 
-With the completion of the security configurations. The next task is to test the firewall. This will require logging into the earlier depolyed VMs and then establish a connection with the web browser on the VMs to observe if traffic will be blocked/allowed as specified in the configurations.
+With the completion of the security configurations. The next task is to test the firewall. This will require logging into the earlier depolyed VMs and then establishling a connection with the web browser on the VMs to observe if traffic will be blocked/allowed as specified in the firewall policy.
 
-The following images show the procedures to connecting to the VM in the HR-subnet via RDP.
-Recall that this connection was possible with the DNAT rule, and the connection to the VM is through the firewall public IP. Hence the firewall public IP and the destination port is specified to enable a connection to the VM (in this case, HR-VM)
+The following images show the procedures to connecting remotely to the VM in the HR-subnet via RDP.
+Note: Recall that this connection was possible with the DNAT rule, and the connection to the VM is through the firewall public IP. Hence the firewall public IP and the destination port is specified to enable a connection to the VM (in this case, HR-VM)
 
 ![image](c2vm1.png)
 
@@ -162,7 +162,7 @@ Entering the login details of the HR-VM
 
 ![image](ENP.PNG)
 
-Succesful access into the HR-VM
+Succesful access into the HR-VM via Azure Bastion
 
 ![image](ENHR.PNG)
 
