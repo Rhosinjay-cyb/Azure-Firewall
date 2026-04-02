@@ -118,7 +118,7 @@ The implementation of Azure Firewall to restrict outbound web access and control
 
 **1.** Starting with the investigation of the partial loading of web pages. The task was to identify the FQDN of the dependencies which the firewall blocked access to. Two different methods were used in identifying the FQDNs. The first method was to use the DevTools of the web browser where the web page is being accessed and the other method is the analysis of firewall logs. 
 
-The DevTools was launched by pressing the F12 key on the keyboard while on the web page in the web browser. In the Devtools environment, the dropped FQDNs could be identified from the networks tab.
+The DevTools was launched by pressing the F12 key on the keyboard while on the affected web page. In the DevTools environment, the dropped FQDNs could be identified from the networks tab.
 
 ![image](EVI21.png)
 
@@ -172,11 +172,11 @@ The process was repeated to connect remotely to the Dev-VM via Azure Bastion.
 
 ## Conclusion
 
-The deployed Azure Firewall was effective in controlling web access and it application rules were updated with FQDNs to allow the web pages to load properly for improve user experience. Azure Bastion was also used to reduce the attack surface.
+This project demonstrated how to secure Azure VMs by controlling outbound traffic with Azure Firewall, and leveraging Azure Bastion for secure remote connection to the VMs while reducing attack surface. The project also demonstrate how to improve security solutions, in this case, enhancing the look and feel of the approved web apps by simply indentifying dependencies of the web pages and granting access to them via the firewall. Additionally, collecting of firewall logs and forwarding it to a log analytics workspace provided visibility and monitoring, reflecting a practical layered approach to cloud workload protection.
 
 ## Future Works
 
-To plan and implement the integration of Microsoft sentinel with the log analytics workspace (Project-workspace) and then collecting logs from Azure Bastion and the Virtual machines and sending it to the sentinel-integrated log analytic workspace together with the already enabled firewall logs for centralized monitoring and threat detection.
+To plan and implement the integration of Microsoft sentinel with the log analytics workspace (Project-workspace) and then collecting logs from Azure Bastion and the Virtual machines and sending it to the Microsoft sentinel-integrated log analytic workspace. Theses logs alongside the already enabled firewall logs would aid centralized monitoring and threat detection.
 
 
  
