@@ -116,9 +116,9 @@ The implementation of Azure Firewall to restrict outbound web access and control
 
 ## Implementation of Recommendations
 
-1 Starting with the investigation of the partial loading of web pages. The task is to identify the FQDN of the dependencies which the firewall blocked access to. Two different methods were used in identifying the FQDNs. The first method was to use the DevTools of the web browser where the web app is being accessed and the other method is the analysis of firewall logs. 
+**1.** Starting with the investigation of the partial loading of web pages. The task was to identify the FQDN of the dependencies which the firewall blocked access to. Two different methods were used in identifying the FQDNs. The first method was to use the DevTools of the web browser where the web page is being accessed and the other method is the analysis of firewall logs. 
 
-  1 The DevTools is launched by pressing the F12 key on the keyboard while on the web page in the web browser. In the Devtools environment, the dropped FQDNs could be identified from the networks tab.
+The DevTools was launched by pressing the F12 key on the keyboard while on the web page in the web browser. In the Devtools environment, the dropped FQDNs could be identified from the networks tab.
 
 ![image](EVI21.png)
 
@@ -136,17 +136,17 @@ Note: It is recommended to avoid broad wildcards unless neccessary.
 
 ![image](EVI22.png)
 
-The web application was refreshed and it is now loading properly
+The web page was refreshed and it now loads properly
 
 ![image](EVI6.PNG)
 
-The application rules allowing web access to other web applications (Linkedin & Github) were equally updated with their FQDNs and the web apps were refreshed.
+The application rules allowing web access to other web applications (Linkedin & Github) were equally updated with their FQDNs and the web apps were refreshed on the web browser.
 
 ![image](EVI8.PNG)
 
 ![image](evi9.PNG)
 
-2. For the deployment of Azure Bastion to provide secure remote access to the VMs without exposing them to the internet. Firstly, AzureBastionSubnet is added to subnets within the virtual network.
+**2.** For the deployment of Azure Bastion to provide secure remote access to the VMs without exposing them to the internet. Firstly, AzureBastionSubnet is added to subnets within the virtual network.
 
 ![image](BST-SN.PNG)
 
