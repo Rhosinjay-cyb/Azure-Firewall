@@ -12,13 +12,13 @@ Azure Firewall
 
 ## Lab Setup
 
-* Deployment of virtual network and multiple subnets\
-* Deployment of virtual machines\
-* Deployment of Azure Firewall alongside firewall policy\
-* Configuration of a route table\
-* Configuration of a user-defined route (UDR)\
-* Configuration of firewall policy (Application, Network and DNAT rules)\
-* Updating the VMs DNS server with external DNS address\
+* Deployment of virtual network and multiple subnets
+* Deployment of virtual machines
+* Deployment of Azure Firewall alongside firewall policy
+* Configuration of a route table
+* Configuration of a user-defined route (UDR)
+* Configuration of firewall policy (Application, Network and DNAT rules)
+* Updating the VMs DNS server with external DNS address
 * Testing of the Firewall 
 
 ## Step Taken (Screenshots)
@@ -116,9 +116,9 @@ The implementation of Azure Firewall to restrict outbound web access and control
 
 ## Implementation of Recommendations
 
-1. Starting with the investigation of the partial loading of web pages. The task is to identify the FQDN of the dependencies which the firewall blocked access to. Two different methods were used in identifying the FQDNs. The first method was to use the DevTools of the web browser where the web app is being accessed and the other method is the analysis of firewall logs. 
+1 Starting with the investigation of the partial loading of web pages. The task is to identify the FQDN of the dependencies which the firewall blocked access to. Two different methods were used in identifying the FQDNs. The first method was to use the DevTools of the web browser where the web app is being accessed and the other method is the analysis of firewall logs. 
 
-The DevTools is launched by pressing the F12 key on the keyboard while on the web page in the web browser. In the Devtools environment, the dropped FQDNs could be identified from the networks tab.
+  1 The DevTools is launched by pressing the F12 key on the keyboard while on the web page in the web browser. In the Devtools environment, the dropped FQDNs could be identified from the networks tab.
 
 ![image](EVI21.png)
 
