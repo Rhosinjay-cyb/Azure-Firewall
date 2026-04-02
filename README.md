@@ -171,9 +171,11 @@ The process was repeated to connect to the Dev-VM via Azure Bastion.
 
 ## Conclusion
 
+The deployed Azure Firewall was effective in controlling web access and it application rules were updated with FQDNs to allow the web pages to load properly for improve user experience. Azure Bastion was also used to reduce the attack surface.
 
 ## Future Works
-Integration of Microsoft sentinel with the log analytics workspace (Project-workspace) and then collecting logs from Azure Bastion and the Virtual machines and sending it to the sentinel-integrated log analytic workspace together with the already enabled firewall logs for centralized monitoring and threat detection.
+
+To plan and implement the integration of Microsoft sentinel with the log analytics workspace (Project-workspace) and then collecting logs from Azure Bastion and the Virtual machines and sending it to the sentinel-integrated log analytic workspace together with the already enabled firewall logs for centralized monitoring and threat detection.
 
 
  
