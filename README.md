@@ -146,15 +146,15 @@ The application rules allowing web access to other web applications (Linkedin & 
 
 ![image](evi9.PNG)
 
-**2.** For the deployment of Azure Bastion to provide secure remote access to the VMs without exposing them to the internet. Firstly, AzureBastionSubnet is added to subnets within the virtual network.
+**2.** For the deployment of Azure Bastion to provide secured remote access to the VMs without exposing them to the internet. Firstly, AzureBastionSubnet is added to subnets within the virtual network.
 
-![image](BST-SNn.PNG)
+![image](BST-SNET.PNG)
 
 Afterwards, Azure Bastion is deployed.
 
 ![image](BST.PNG)
 
-Attempting to connect the HR-VM via Azure Bastion
+Now connecting remotely to the HR-VM via Azure Bastion
 
 ![image](CVB.PNG)
 
@@ -166,13 +166,13 @@ Succesful access into the HR-VM via Azure Bastion
 
 ![image](ENHR.PNG)
 
-The process was repeated to connect remotely to the Dev-VM via Azure Bastion.
+The processes were repeated to connect remotely to the Dev-VM via Azure Bastion.
 
 ![image](ENDEV.PNG)
 
 ## Conclusion
 
-This project demonstrated how to secure Azure VMs by controlling outbound traffic with Azure Firewall, and leveraging Azure Bastion for secure remote connection to the VMs while reducing attack surface. The project also demonstrate how to improve security solutions, in this case, enhancing the look and feel of the approved web apps by simply indentifying their dependencies and granting access to them via the firewall policy. Additionally, collection of firewall logs and forwarding it to a log analytics workspace provided visibility and monitoring, reflecting a practical layered approach to cloud workload protection.
+This project demonstrated how to secure Azure VMs by controlling outbound traffic with Azure Firewall, and leveraging Azure Bastion for secure remote connection to the VMs to reduce attack surface. The project also demonstrate how to improve security solutions, in this case, enhancing the look and feel of the approved web apps by simply indentifying their dependencies and granting access to them via the firewall policy. Additionally, collection of firewall logs and forwarding it to a log analytics workspace provided visibility and monitoring, reflecting a practical layered approach to cloud workload protection.
 
 ## Future Works
 
