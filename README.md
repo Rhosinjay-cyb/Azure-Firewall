@@ -25,7 +25,7 @@ Azure Firewall, Azure Bastion, Log Analytics Workspace, DevTools
 
 ![image](Arc-diag.png)
 
-## Step Taken (Screenshots)
+## Step Taken
 
 The security configuration starts with the creation of a resource group (Project-RG)
 
@@ -73,7 +73,7 @@ For HR-VM
 For Dev-VM
 ![image](vmdns.png)
 
-## Results (Screenshots)
+## Results
 
 With the completion of the security configurations. The next task is to test the firewall. This will require connecting remotely to the earlier depolyed VMs and then establishling a connection with the web browser on the VMs to observe if traffic will be blocked/allowed as specified in the firewall policy.
 
