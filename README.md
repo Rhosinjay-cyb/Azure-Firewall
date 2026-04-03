@@ -148,7 +148,7 @@ The application rules allowing web access to other web applications (Linkedin & 
 
 **2.** For the deployment of Azure Bastion to provide secured remote access to the VMs without exposing them to the internet. Firstly, AzureBastionSubnet is added to subnets within the virtual network.
 
-![image](BST-SNET.PNG)
+![image](BST-SNET.png)
 
 Afterwards, Azure Bastion is deployed.
 
