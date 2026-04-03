@@ -19,7 +19,11 @@ Azure Firewall, Azure Bastion, Log Analytics Workspace, DevTools
 * Configuration of a user-defined route (UDR)
 * Configuration of firewall policy (Application, Network and DNAT rules)
 * Updating the VMs' DNS server with external DNS address
-* Testing of the Firewall 
+* Testing of the Firewall
+
+## Architecture Diagram
+
+![image](Arc-diag.png)
 
 ## Step Taken (Screenshots)
 
