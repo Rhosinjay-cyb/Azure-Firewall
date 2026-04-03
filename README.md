@@ -57,7 +57,7 @@ The network rule allows the firewall to send DNS request to the external DNS ser
 
 The DNAT rule allows users to connect to the VMs in the subnet through RDP. However, the connections is routed through the firewall. The DNAT rule helps the firewall to identify which VM to send the RDP traffic to. To avoid conflict in RDP traffic, different destination port no is specified for each VM (3389, 3390) while the traffic is translated to the standard RDP port (3389). This rule is configured to allow connection to the RDP from any IP address. 
 
-Note: When multiple VMs have their RDP traffic routed through the firewall, their destination port numbers must be distinct, which may require assigning random numbers as port numbers.
+Note: When multiple VMs have their RDP traffic routed through the firewall, their destination port numbers must be distinct, which may require assigning random numbers as port numbers. Connecting to the VM will requiring specifying the Public IP of the firewall and the destination port no as a socket.
 
 ![image](dr.png)
 
@@ -94,8 +94,8 @@ A resulting denied access or failed connection due to the deployed firewall come
 
 ![image](web4.png)
 
-The same procedures were also repeated for the other VM (Dev-VM)
-The following images show the procedures to connecting to the VM in the Dev-subnet via RDP.
+The same procedures were also repeated for the other VM (Dev-VM).
+The following images shows the procedures to connecting to the VM in the Dev-subnet via RDP.
 Also, recall that this connection was possible with the DNAT rule, and the connection to the VM is through the firewall public IP. Hence the firewall public IP and the destination port is specified to enable a connection to the VM (in this case Dev-VM)
 
 ![image](c2vm2.png)
