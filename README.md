@@ -25,13 +25,13 @@ Azure Firewall, Azure Bastion, Log Analytics Workspace, DevTools
 
 ![image](Arc-diag.png)
 
-## Step Taken
+## Steps Taken
 
 The security configuration starts with the creation of a resource group (Project-RG)
 
 ![image](rg.PNG)
 
-Followed with the creation of a virtual network (Project-Vnet) alongside with subnets. The first two subnets are for the management of the firewall, while the last two subnets are workload subnets for the HR and Dev teams. VMs will afterwards be deployed in the workload subnets to test the deployed firewall.
+Followed with the creation of a virtual network (Project-Vnet) alongside with subnets. The first two subnets are for the management of the firewall, AzureFirewallSubnet is where the firewall will be deployed while AzureFirewallManagementSubnet is responsible for forced tunneling. The the last two subnets are workload subnets for the HR and Dev teams. VMs will afterwards be deployed in the workload subnets to test the deployed firewall.
 
 ![image](VNET.png)
 
