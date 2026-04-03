@@ -47,7 +47,7 @@ With the firewall policy (Project-FWP), the Application rule, Network rule and D
 
 ![image](fwp.png)
 
-The application Rule is created as shown below. The first rule is applied to the HR-subnet while the other rule is applied to the Dev-subnet. The source of the first rule is the IP address space of the HR-subnet, the rule allows access to only the FQDN (linkedin.com & coursera.org) specified in the rule while other connections will be blocked. The source of the second rule is the IP address space of the Dev-subnet and the rule only allows access to FQDN (github.com) specified in the rule while other connections will also be blocked.
+The application Rule is created as shown below. The first rule is applied to the HR-subnet while the other rule is applied to the Dev-subnet. The source of the first rule is the IP address space of the HR-subnet, the rule allows access to only the fully qualified domain name (FQDN) (linkedin.com & coursera.org) specified in the rule while other connections will be blocked. The source of the second rule is the IP address space of the Dev-subnet and the rule only allows access to FQDN (github.com) specified in the rule while other connections will also be blocked.
 
 ![image](appr.PNG)
 
@@ -112,25 +112,30 @@ The web browser on the Dev-VM is launched and it is used to access the web app s
 
 ## Findings and Recommendations
 
-The implementation of Azure Firewall to restrict outbound web access and control inbound RDP via DNAT was succesful as shown in the result section. However, it was observed that the web pages load partially. Meaning, some of its dependencies has been blocked by the firewall. Hence, this drawback needs to resolved to make this security solution suitable for production standard. Other areas of concern to enable stronger security include restricting source IPs in the firewall policies, enabling diagnostic settings of the firewall to detect suspicious traffic and replacing public RDP exposure with Azure Bastion to minimize attack surface.
+The implementation of Azure Firewall to restrict outbound web access and control inbound RDP via DNAT was succesful as shown in the result section. However, it was observed that the web pages load partially. Meaning, the domains that contains the dependencies (logos, images, videos and other web files) of the web page has been blocked by the firewall. Hence, this drawback needs to resolved to make this security solution fit for production standard. Other areas of concern to enable stronger security include restricting source IPs in the firewall policy, enabling diagnostic setting of the firewall to detect suspicious traffic, and replacing public RDP exposure with Azure Bastion to minimize attack surface.
 
 ## Implementation of Recommendations
 
-**1.** Starting with analysing the partial loading of web pages. The task was to identify the FQDN of the dependencies which the firewall blocked access to. Two different methods were used in identifying the FQDNs. The first method was to use the DevTools of the web browser where the web page is being accessed and the other method is the analysis of firewall logs. 
+**1.** Starting with analysing the partial loading of web pages. The task was to identify the domain of the dependencies which the firewall blocked access to. Two different methods were used in identifying the FQDNs. The first method was to use the DevTools of the web browser where the web page is being accessed and the other method is the analysis of firewall logs. 
 
 The DevTools was launched by pressing the F12 key on the keyboard while on the affected web page. In the DevTools environment, the dropped FQDNs could be identified from the networks tab after reloading the web page.
 
 ![image](EVI21.png)
 
-Before the firewall logs could be accessed, the diagnostics settings of the firewall was enabled from the monitoring blade of the firewall and the firewall logs were forwarded to a log analytics workspace (Project-workspace) which was created earlier.
+A close observation of the source tab shows the various files in the domains which the firewall blocked access to causing the disruption of the look of the web page.
+
+![image](EVI3.PNG)
+
+For the other method involving firewall logs, the diagnostic setting of the firewall needs to be enabled for the logs to be accessible.
+The diagnostics settings of the firewall was enabled from the monitoring blade of the firewall and the firewall logs were forwarded to a log analytics workspace (Project-workspace) which was created earlier.
 
 ![image](FW2LAW.PNG)
 
-Afterwards, the firewall logs particularly application rule log was analysed to identify the blocked FQDNs
+Afterwards, the firewall logs particularly the application rule log was analysed to identify the blocked domains
 
 ![image](EVI20.png)
 
-Having identified the denied FQDNs (d3njjcbhbojbot.cloudfront.net & coursera_assets.s3.amazonaws.com) with two different methods. The application rule is updated with the newly discovered FQDN while using a wildcard. 
+Having identified the affected domains (d3njjcbhbojbot.cloudfront.net & coursera_assets.s3.amazonaws.com) with two different methods. The application rule is updated with the newly discovered domains while using a wildcard. 
 
 Note: It is recommended to avoid broad wildcards unless neccessary.
 
@@ -140,7 +145,7 @@ The web page was refreshed and it now loads properly
 
 ![image](EVI6.PNG)
 
-The application rules allowing web access to other web applications (Linkedin & Github) were equally updated with their FQDNs and the web apps were refreshed on the web browser.
+The application rules allowing web access to other web applications (Linkedin & Github) were equally updated with their respective affected FQDNs and the web apps were refreshed on the web browser.
 
 ![image](EVI8.PNG)
 
