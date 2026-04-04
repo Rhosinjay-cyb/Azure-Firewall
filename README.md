@@ -23,7 +23,7 @@ Azure Firewall, Azure Bastion, Log Analytics Workspace, DevTools
 
 ## Architecture Diagram
 
-![image](Arc-diag.png)
+![image](Images/Arc-diag.png)
 
 ## Steps Taken
 
