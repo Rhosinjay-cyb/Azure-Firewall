@@ -4,7 +4,7 @@ Designing Secured Public Access to Azure VMs and controlling its Web Access Usin
 
 ## Objective
 
-The aim of this project is deploy an Azure firewall to control outbound web access of VMs, centralize traffic inspection and leverage firewall policy (DNAT Rule) to configure remotes access to VMs via the public IP of the firewall. 
+The aim of this project is to deploy an Azure firewall to control outbound web access of VMs, centralize traffic inspection and leverage firewall policy (DNAT Rule) to configure remote access to VMs via the public IP of the firewall. 
 
 ## Tools Used
 
