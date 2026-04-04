@@ -29,49 +29,49 @@ Azure Firewall, Azure Bastion, Log Analytics Workspace, DevTools
 
 The security configuration starts with the creation of a resource group (Project-RG)
 
-![image](rg.PNG)
+![image](Images/rg.PNG)
 
 Followed with the creation of a virtual network (Project-Vnet) alongside with subnets. The first two subnets are for the management of the firewall, AzureFirewallSubnet is where the firewall will be deployed while AzureFirewallManagementSubnet is responsible for forced tunneling. The the last two subnets are workload subnets for the HR and Dev teams. VMs will afterwards be deployed in the workload subnets to test the deployed firewall.
 
-![image](VNET.png)
+![image](Images/VNET.png)
 
 The deployed VMs (HR-VM & Dev-VM) are shown below, the outbound access of both VMs will be configured to restrict access to certain web apps. Meaning, users accessing the VMs in the HR-subnet will have their web access restricted to web apps allowed in the firewall policy. Both VMs are Windows Server 2019 Datacenter Gen2, and they will be accessed via remote desktop protocol (RDP).
 
-![image](VMs.png)
+![image](Images/VMs.png)
 
 The Azure Firewall (Project-FW) of basic SKU is deployed in the AzureFirewallsubnet. The public and private IP address of the firewall are noted and would be used in further configurations. The firewall policy (Project-FWP) is also created alongside the deployment of the firewall.
 
-![image](FW.png)
+![image](Images/FW.png)
 
 A route table (Project-RT) is configured and the HR-subnet and Dev-subnet is associated to it. A user-define route (OutboundTraffic) is added to the route table which enables the traffic from both associated subnets to be routed through the firewall before reaching the internet.
 
-![image](RT.png)
+![image](Images/RT.png)
 
 With the firewall policy (Project-FWP), the Application rule, Network rule and DNAT rule would be configured.
 
-![image](fwp.png)
+![image](Images/fwp.png)
 
 The application Rule is created as shown below. The first rule is applied to the HR-subnet while the other rule is applied to the Dev-subnet. The source of the first rule is the IP address space of the HR-subnet, the rule allows access to only the fully qualified domain name (FQDN) (linkedin.com & coursera.org) specified in the rule while other connections will be blocked. The source of the second rule is the IP address space of the Dev-subnet and the rule only allows access to FQDN (github.com) specified in the rule while other connections will also be blocked.
 
-![image](appr.PNG)
+![image](Images/appr.PNG)
 
 The network rule allows the firewall to send DNS request to the external DNS servers (209.244.0.3, 209.244.0.4) for the resolving of domains. The rule is applicable to VMs that are located in the subnet specified in the source address (HR-subnet and Dev-subnet)
 
-![image](nnr.png)
+![image](Images/nnr.png)
 
 The DNAT rule allows users to connect to the VMs in the subnet through RDP. However, the connections is routed through the firewall. The DNAT rule helps the firewall to identify which VM to send the RDP traffic to. To avoid conflict in RDP traffic, different destination port no is specified for each VM (3389, 3390) while the traffic is translated to the standard RDP port (3389). This rule is configured to allow connection to the RDP from any IP address. 
 
 Note: When multiple VMs have their RDP traffic routed through the firewall, their destination port numbers must be distinct, which may require assigning random numbers as port numbers. Connecting to the VM will requiring specifying the Public IP of the firewall and the destination port number as a socket.
 
-![image](dr.png)
+![image](Images/dr.png)
 
 The VMs in both subnets are updated with a primary and secondary DNS server to allow the VMs send DNS request to the external DNS servers.
 
 For HR-VM
-![image](vmdns2.png)
+![image](Images/vmdns2.png)
 
 For Dev-VM
-![image](vmdns.png)
+![image](Images/vmdns.png)
 
 ## Results
 
@@ -80,39 +80,39 @@ With the completion of the security configurations. The next task is to test the
 The following images show the procedures to connecting remotely to the VM in the HR-subnet via RDP.
 Note: Recall that this connection was possible with the DNAT rule, and the connection to the VM is through the firewall public IP. Hence the firewall public IP and the destination port is specified to enable a connection to the VM (in this case, HR-VM)
 
-![image](c2vm1.png)
+![image](Images/c2vm1.png)
 
-![image](lg2vm1.png)
+![image](Images/lg2vm1.png)
 
-![image](entry.png)
+![image](Images/entry.png)
 
 The web browser on the HR-VM is launched and it is used to access the web apps allowed in the application rule and the connection was succesful while the connection to other websites were denied.
 
-![image](web1.png)
+![image](Images/web1.png)
 
-![image](web2.png)
+![image](Images/web2.png)
 
 A resulting denied access or failed connection due to the deployed firewall comes in different variants as shown in the following images.
 
-![image](web3.png)
+![image](Images/web3.png)
 
-![image](web4.png)
+![image](Images/web4.png)
 
 The same procedures were also repeated for the other VM (Dev-VM).
 The following images shows the procedures to connecting to the VM in the Dev-subnet via RDP.
 Also, recall that this connection was possible with the DNAT rule, and the connection to the VM is through the firewall public IP. Hence the firewall public IP and the destination port is specified to enable a connection to the VM (in this case Dev-VM)
 
-![image](c2vm2.png)
+![image](Images/c2vm2.png)
 
-![image](lg2vm2.png)
+![image](Images/lg2vm2.png)
 
-![image](entry2.png)
+![image](Images/entry2.png)
 
 The web browser on the Dev-VM is launched and it is used to access the web app specified in the application rule and the connection was succesful while other connections were denied.
 
-![image](web11.png)
+![image](Images/web11.png)
 
-![image](web12.png)
+![image](Images/web12.png)
 
 ## Findings and Recommendations
 
@@ -124,60 +124,60 @@ The implementation of Azure Firewall to restrict outbound web access and control
 
 The DevTools was launched by pressing the F12 key on the keyboard while on the affected web page. In the DevTools environment, the dropped FQDNs could be identified from the networks tab after reloading the web page.
 
-![image](EVI21.png)
+![image](Images/EVI21.png)
 
 A close observation of the source tab shows the various files in the domains which the firewall blocked access to causing the disruption of the look of the web page.
 
-![image](EVI3.PNG)
+![image](Images/EVI3.PNG)
 
 For the other method involving firewall logs, the diagnostic setting of the firewall needs to be enabled for the logs to be accessible.
 The diagnostics settings of the firewall was enabled from the monitoring blade of the firewall and the firewall logs were forwarded to a log analytics workspace (Project-workspace) which was created earlier.
 
-![image](FW2LAW.PNG)
+![image](Images/FW2LAW.PNG)
 
 Afterwards, the firewall logs particularly the application rule log was analysed to identify the blocked domains
 
-![image](EVI20.png)
+![image](Images/EVI20.png)
 
 Having identified the affected domains (d3njjcbhbojbot.cloudfront.net & coursera_assets.s3.amazonaws.com) with two different methods. The application rule is updated with the newly discovered domains while using a wildcard. 
 
 Note: It is recommended to avoid broad wildcards unless neccessary.
 
-![image](EVI22.png)
+![image](Images/EVI22.png)
 
 The web page was refreshed and it now loads properly
 
-![image](EVI6.PNG)
+![image](Images/EVI6.PNG)
 
 The application rules allowing web access to other web applications (Linkedin & Github) were equally updated with their respective affected FQDNs and the web apps were refreshed on the web browser.
 
-![image](EVI8.PNG)
+![image](Images/EVI8.PNG)
 
-![image](evi9.PNG)
+![image](Images/evi9.PNG)
 
 **2.** For the deployment of Azure Bastion to provide secured remote access to the VMs without exposing them to the internet. Firstly, AzureBastionSubnet is added to subnets within the virtual network.
 
-![image](BST-SNET.png)
+![image](Images/BST-SNET.png)
 
 Afterwards, Azure Bastion is deployed.
 
-![image](BST.PNG)
+![image](Images/BST.PNG)
 
 Now connecting remotely to the HR-VM via Azure Bastion
 
-![image](CVB.PNG)
+![image](Images/CVB.PNG)
 
 Entering the login details of the HR-VM
 
-![image](ENP.PNG)
+![image](Images/ENP.PNG)
 
 Succesful access into the HR-VM via Azure Bastion
 
-![image](ENHR.PNG)
+![image](Images/ENHR.PNG)
 
 The processes were repeated to connect remotely to the Dev-VM via Azure Bastion.
 
-![image](ENDEV.PNG)
+![image](Images/ENDEV.PNG)
 
 ## Conclusion
 
