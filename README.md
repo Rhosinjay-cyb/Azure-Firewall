@@ -185,7 +185,7 @@ This project demonstrated how to secure Azure VMs by controlling outbound traffi
 
 ## Future Works
 
-To plan and implement the integration of Microsoft sentinel with the log analytics workspace (Project-workspace) and then collecting logs from Azure Bastion and the Virtual machines and sending it to the Microsoft sentinel-integrated log analytic workspace. These logs alongside the already enabled firewall logs would aid centralized monitoring and threat detection.
+To plan and implement the integration of Microsoft sentinel with the log analytics workspace (Project-workspace) and then collecting logs from Azure Bastion and the Virtual machines and sending it to the Microsoft sentinel-integrated log analytics workspace. These logs alongside the already enabled firewall logs would aid centralized monitoring and threat detection.
 
 
  
