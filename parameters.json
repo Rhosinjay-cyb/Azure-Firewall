@@ -1,0 +1,54 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "virtualMachines_HR_VM_name": {
+            "value": null
+        },
+        "virtualMachines_Dev_VM_name": {
+            "value": null
+        },
+        "routeTables_Project_RT_name": {
+            "value": null
+        },
+        "bastionHosts_Project_BST_name": {
+            "value": null
+        },
+        "publicIPAddresses_FW_PIP_name": {
+            "value": null
+        },
+        "azureFirewalls_Project_FW_name": {
+            "value": null
+        },
+        "publicIPAddresses_FW_MPIP_name": {
+            "value": null
+        },
+        "networkInterfaces_hr_vm421_name": {
+            "value": null
+        },
+        "networkInterfaces_dev_vm784_name": {
+            "value": null
+        },
+        "firewallPolicies_Project_FWP_name": {
+            "value": null
+        },
+        "virtualNetworks_Project_Vnet_name": {
+            "value": null
+        },
+        "publicIPAddresses_Project_BPIP_name": {
+            "value": null
+        },
+        "networkSecurityGroups_HR_VM_nsg_name": {
+            "value": null
+        },
+        "networkSecurityGroups_Dev_VM_nsg_name": {
+            "value": null
+        },
+        "workspaces_Project_workspace_name": {
+            "value": null
+        },
+        "solutions_SecurityInsights_project_workspace__name": {
+            "value": null
+        }
+    }
+}
