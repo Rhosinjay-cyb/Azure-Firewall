@@ -1,6 +1,6 @@
 ## Project Title
 
-Designing Secured Public Access to Azure VMs and controlling their outbound traffic Using Azure Firewall.
+Designing Secured Public Access to Azure VMs and controlling their outbound traffic using Azure Firewall.
 
 ## Objective
 
